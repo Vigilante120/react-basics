@@ -1,3 +1,6 @@
+import Teacher from "./teacher";
+
+// ES6 BASICS 
 // import React from 'react';
 // import ReactDOM from 'react-dom/client';
 // import './index.css';
@@ -104,3 +107,12 @@ const second = [4,5,6];
 const combined = [...first, 'v', ...second, 'c'];
 
 console.log(combined);
+// default -> import ... from '';
+// Named -> import {...} from '';
+
+
+const teacher = new Teacher("nishant", "btech");
+teacher.walk();
+teacher.teach();
+
+// named and default 
