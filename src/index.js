@@ -1,118 +1,110 @@
+// Imports 'Teacher' from the 'teacher.js' file. 
+// Since it was exported as 'default', we don't need curly braces.
 import Teacher from "./teacher";
 
-// ES6 BASICS 
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
+// ==========================================
+// ES6 BASICS FOR REACT
+// ==========================================
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
-
-// // If you want to start measuring performance in your app, pass a function
-// // to log results (for example: reportWebVitals(console.log))
-// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
-
-// var -> function
-// let -> block
-// const -> block
-
-// function sayHello() {
-//   for (let i = 0; i < 5; i++){
-//     console.log(i)
-//   }
-  
-//   console.log(i); 
-// }
-
-// sayHello();
-
-// object
-// const person = {
-//   name: 'Nishant',
-//   walk() {},
-//   talk() {}
-// };
-
-// person.talk();
-// person.walk();
-// person['name'] = 'Nishu';
-
-// this keyword
-
-// const person = {
-//   name: 'Nishant',
-//   walk() {
-//     console.log(this);
-//   }
-// }
-
-// person.walk();
-
-// const walk = person.walk.bind(person);
-// walk();
-
-// window object 
-// arrow function 
+// ------------------------------------------
+// 1. Arrow Functions
+// ------------------------------------------
+// A shorter way to write functions.
+// If there is only one parameter (number), parentheses () are optional.
+// If there is only one line of code, the 'return' keyword and curly braces {} are implicit.
 const square = number => number * number;
+console.log("Square of 5:", square(5));
 
 
+// ------------------------------------------
+// 2. Array.filter()
+// ------------------------------------------
+// Used to create a new array with only the elements that pass a test.
 const jobs = [
   {id: 1, isActive: true},
   {id: 2, isActive: true},
   {id: 3, isActive: false}
-]
+];
 
-const activeJobs = jobs.filter(jobs => jobs.isActive);
-console.log(activeJobs);
+// We pass a function that returns true or false for each item.
+// Here we keep only jobs where isActive is true.
+const activeJobs = jobs.filter(job => job.isActive);
+console.log("Active Jobs:", activeJobs);
 
 
-const person = {
+// ------------------------------------------
+// 3. Arrow Functions & 'this'
+// ------------------------------------------
+// Arrow functions don't rebind 'this'. They inherit 'this' from the outer scope.
+const human = {
   talk() {
-    var self = this;
+    // In a regular function, 'this' inside setTimeout would refer to the Window object.
+    // With an arrow function, 'this' correctly refers to the 'human' object.
     setTimeout(() => {
-      console.log("this", this);
+      console.log("this inside timeout:", this);
     }, 1000);
   }
 };
 
-person.talk();
+human.talk();
 
+
+// ------------------------------------------
+// 4. Array.map()
+// ------------------------------------------
+// Used to transform each element in an array into something else.
+// Very useful in React for rendering lists of items.
 const colors = ['red', 'green', 'orange'];
-const items = colors.map(color => `<li>${color}</li>`); // backtricks a
-console.log(items);
 
+// We are converting each color string into an HTML template string.
+const items = colors.map(color => `<li>${color}</li>`); // Template literal using backticks `
+console.log("Mapped Colors:", items);
+
+
+// ------------------------------------------
+// 5. Object Destructuring
+// ------------------------------------------
+// A way to extract properties from an object into variables.
 const address = {
-  street: '',
-  city: '',
-  country: '',
+  street: 'Main St',
+  city: 'New York',
+  country: 'USA',
 };
 
-// destructuring 
+// Extracts 'street', 'city', and 'country' properties into standalone variables.
 const { street, city, country } = address;
 
+// You can also assign them to a new variable name (alias)
 const { street: st } = address;
+// Now 'st' holds the value of 'address.street'.
 
-// spread operator 
 
-const first = [1,2,3];
-const second = [4,5,6];
+// ------------------------------------------
+// 6. Spread Operator (...)
+// ------------------------------------------
+// Used to combine arrays or objects.
+const first = [1, 2, 3];
+const second = [4, 5, 6];
 
+// Creates a new array with elements from 'first', then 'v', then 'second', then 'c'.
 const combined = [...first, 'v', ...second, 'c'];
-
-console.log(combined);
-// default -> import ... from '';
-// Named -> import {...} from '';
+console.log("Combined Array:", combined);
 
 
-const teacher = new Teacher("nishant", "btech");
+// ------------------------------------------
+// 7. Classes & Modules
+// ------------------------------------------
+// We created a 'Person' class and a 'Teacher' class that extends it.
+// We imported 'Teacher' at the top of this file.
+
+const teacher = new Teacher("Nishant", "B.Tech");
+
+// Teacher inherits 'walk' from Person
 teacher.walk();
+
+// Teacher has its own method 'teach'
 teacher.teach();
 
-// named and default 
+// Accessing properties
+console.log("Teacher Name:", teacher.name);
+console.log("Teacher Degree:", teacher.degree);
