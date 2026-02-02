@@ -108,3 +108,62 @@ teacher.teach();
 // Accessing properties
 console.log("Teacher Name:", teacher.name);
 console.log("Teacher Degree:", teacher.degree);
+
+
+// ------------------------------------------
+// 8. Spread Operator (Objects)
+// ------------------------------------------
+// Combine properties from multiple objects.
+const firstObj = { name: 'Mosh' };
+const secondObj = { job: 'Instructor' };
+
+const combinedObj = { ...firstObj, ...secondObj, location: 'Australia' };
+console.log("Combined Object:", combinedObj);
+
+
+// ------------------------------------------
+// 9. Ternary Operator
+// ------------------------------------------
+// A shortcut for if-else statements.
+// Syntax: condition ? expressionIfTrue : expressionIfFalse
+const age = 22;
+const type = age > 18 ? 'Adult' : 'Child';
+console.log("User Type:", type);
+
+
+// ------------------------------------------
+// 10. Destructuring Arguments
+// ------------------------------------------
+// Extract object properties directly in the function argument.
+// Very common in React for 'props'.
+const profile = { name: 'Alice', age: 25 };
+
+const printName = ({ name }) => {
+  console.log("Extracted Name:", name);
+};
+printName(profile);
+
+
+// ------------------------------------------
+// 11. Optional Chaining (?.)
+// ------------------------------------------
+// Safely access nested properties. Returns undefined if a reference is nullish.
+const user = { id: 1, info: { name: 'Sara' } };
+
+// No error even if 'address' is missing.
+const streetName = user.address?.street; 
+console.log("Street (Optional Chain):", streetName);
+
+
+// ------------------------------------------
+// 12. Async / Await
+// ------------------------------------------
+// Modern syntax for promises.
+const fetchData = async () => {
+  // Simulating an API call
+  const result = await new Promise(resolve => setTimeout(() => resolve("Data Loaded"), 500));
+  console.log(result);
+};
+
+fetchData();
+
