@@ -1,6 +1,7 @@
 // Imports 'Teacher' from the 'teacher.js' file. 
 // Since it was exported as 'default', we don't need curly braces.
 import Teacher from "./teacher";
+import ReactDOM from "react-dom/client";
 
 // ==========================================
 // ES6 BASICS FOR REACT
@@ -167,3 +168,15 @@ const fetchData = async () => {
 
 fetchData();
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <div>
+    <h1>
+      Hey this is a rendered text using react
+    </h1>
+    <p>
+      Enjoy the Ride
+    </p>
+  </div>
+);
